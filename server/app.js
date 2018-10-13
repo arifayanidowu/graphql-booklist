@@ -2,6 +2,7 @@ const express = require("express");
 const graphqlHTTP = require("express-graphql");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 
 const schema = require("./schema/schema");
 
@@ -28,6 +29,12 @@ app.use(
     graphiql: true
   })
 );
+
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
