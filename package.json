@@ -10,8 +10,8 @@
   "scripts": {
     "start": "node app.js",
     "dev:server": "nodemon app.js",
-    "prod:build": "cd .. && cd client && npm run build",
-    "heroku-postbuild": "npm install && npm run prod:build"
+    "prod:build": "cd client && npm install && npm run build",
+    "heroku-postbuild": "npm run prod:build"
   },
   "keywords": [],
   "author": "",
